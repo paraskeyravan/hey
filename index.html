@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pew prw</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: url('https://img.freepik.com/premium-vector/cute-teddy-bear-choco-seamless-pattern-kawaii-wallpaper_513640-1961.jpg?w=740') fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        #text {
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            color: plum; /* Pink color */
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: floatingText 2s ease-in-out infinite;
+        }
+
+        @keyframes floatingText {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .button-span {
+            position: absolute;
+            bottom: 150px; /* Adjusted position above the bottom */
+            padding: 20px 40px;
+            font-size: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: transform 0.5s ease-in-out, width 0.5s ease-in-out; /* Added width transition */
+        }
+
+        #yesButton {
+            left: calc(50% - 100px); /* Adjusted left position */
+            background-color: #4CAF50; /* Crimson color */
+            color: white;
+        }
+
+        #noButton {
+            left: calc(50% + 40px); /* Adjusted left position */
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="text">COFFEE??😚💕</div>
+        <span id="noButton" class="button-span" onclick="handleNo()">No</span>
+        <span id="yesButton" class="button-span" onclick="handleYes()">Yes</span>
+    </div>
+
+    <script>
+        var initialPosition = true;
+
+        function handleYes() {
+            alert("What bout after coffee🌚");
+            // You can add code here to send an email
+        }
+
+        function handleNo() {
+            var noButton = document.getElementById('noButton');
+            if (initialPosition) {
+                var rand = (Math.random() * 300) + 75;
+                // Move to the second position (just below the top line)
+                noButton.style.transform = `translateY(${-rand}px) scale(0.5)`; // Reduced size
+            } else {
+                // Move back to the initial position and size
+                noButton.style.transform = 'translateY(0) scale(1)';
+            }
+            initialPosition = !initialPosition;
+        }
+    </script>
+</body>
+</html>
